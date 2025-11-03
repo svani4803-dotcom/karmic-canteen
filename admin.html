@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2 style="text-align:center; color:#007bff;">Admin Dashboard</h2>
+  <p style="text-align:center;">Summary of employee meal orders</p>
+
+  <table border="1" cellspacing="0" cellpadding="10" align="center" id="orderSummary">
+    <thead>
+      <tr style="background-color:#007bff; color:white;">
+        <th>Meal Type</th>
+        <th>Total Orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will load here dynamically -->
+    </tbody>
+  </table>
+
+  <div style="text-align:center; margin-top:20px;">
+    <button onclick="clearAllOrders()" style="padding:8px 16px; background:red; color:white; border:none; border-radius:5px;">Clear All Orders</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

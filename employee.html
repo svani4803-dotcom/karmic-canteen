@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karmic Canteen - Employee Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Karmic Canteen - Employee Dashboard</h2>
+
+  <label>Employee Name:</label><br>
+  <input type="text" id="employeeName" placeholder="Enter your name"><br><br>
+
+  <!-- BREAKFAST -->
+  <h3>Breakfast</h3>
+  <label>Do you want breakfast?</label><br>
+  <input type="radio" name="wantBreakfast" value="yes"> Yes
+  <input type="radio" name="wantBreakfast" value="no"> No
+
+   
+
+  <!-- LUNCH -->
+  <h3>Lunch</h3>
+  <label>Do you want lunch?</label><br>
+  <input type="radio" name="wantLunch" value="yes"> Yes
+  <input type="radio" name="wantLunch" value="no"> No
+ 
+
+  <!-- SNACKS -->
+  <h3>Snacks</h3>
+  <label>Do you want snacks?</label><br>
+  <input type="radio" name="wantSnacks" value="yes"> Yes
+  <input type="radio" name="wantSnacks" value="no"> No
+  
+
+  <br>
+  <button onclick="placeOrder()">Place Order</button>
+  <button onclick="clearOrders()">Clear All Orders</button>
+
+  <h3>Employee Orders</h3>
+  <ul id="orderList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
