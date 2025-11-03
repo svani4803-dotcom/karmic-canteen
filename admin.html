@@ -4,28 +4,107 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 60%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    button {
+      margin-top: 25px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #dc3545;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #c82333;
+    }
+  </style>
 </head>
 <body>
-  <h2 style="text-align:center; color:#007bff;">Admin Dashboard</h2>
-  <p style="text-align:center;">Summary of employee meal orders</p>
+  <h1>Admin Dashboard</h1>
+  <p>Summary of total employee food orders</p>
 
-  <table border="1" cellspacing="0" cellpadding="10" align="center" id="orderSummary">
+  <table>
     <thead>
-      <tr style="background-color:#007bff; color:white;">
+      <tr>
         <th>Meal Type</th>
         <th>Total Orders</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Data will load here dynamically -->
+      <tr>
+        <td>Breakfast</td>
+        <td id="breakfastCount">0</td>
+      </tr>
+      <tr>
+        <td>Lunch</td>
+        <td id="lunchCount">0</td>
+      </tr>
+      <tr>
+        <td>Snacks</td>
+        <td id="snacksCount">0</td>
+      </tr>
     </tbody>
   </table>
 
-  <div style="text-align:center; margin-top:20px;">
-    <button onclick="clearAllOrders()" style="padding:8px 16px; background:red; color:white; border:none; border-radius:5px;">Clear All Orders</button>
-  </div>
+  <button onclick="clearOrders()">Clear All Orders</button>
 
-  <script src="script.js"></script>
+  <script>
+    function loadSummary() {
+      const orders = JSON.parse(localStorage.getItem('employeeOrders')) || [];
+      let breakfastCount = 0;
+      let lunchCount = 0;
+      let snacksCount = 0;
+
+      orders.forEach(order => {
+        if (order.breakfast === "Yes") breakfastCount++;
+        if (order.lunch === "Yes") lunchCount++;
+        if (order.snacks === "Yes") snacksCount++;
+      });
+
+      document.getElementById("breakfastCount").textContent = breakfastCount;
+      document.getElementById("lunchCount").textContent = lunchCount;
+      document.getElementById("snacksCount").textContent = snacksCount;
+    }
+
+    function clearOrders() {
+      if (confirm("Are you sure you want to clear all orders?")) {
+        localStorage.removeItem('employeeOrders');
+        loadSummary();
+      }
+    }
+
+    loadSummary();
+  </script>
 </body>
 </html>
